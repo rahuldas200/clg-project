@@ -22,6 +22,8 @@ const Hero: FC<Props> = (props) => {
    }
   }
 
+  console.log(data);
+
 
   return (
    <>

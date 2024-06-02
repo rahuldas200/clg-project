@@ -132,6 +132,7 @@ exports.editLayout = (0, catchAsyncErrors_1.CatchAsyncError)(async (req, res, ne
 });
 // get layout by type
 exports.getLayoutByType = (0, catchAsyncErrors_1.CatchAsyncError)(async (req, res, next) => {
+    console.log("layout");
     try {
         const { type } = req.params;
         const layout = await layout_model_1.default.findOne({ type });

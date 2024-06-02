@@ -34,16 +34,21 @@ const CheckOutForm = ({ data,user,refetch }: Props) => {
       return;
     }
     setIsLoading(true);
-    const { error, paymentIntent } = await stripe.confirmPayment({
+    const res = await stripe.confirmPayment({
       elements,
       redirect: "if_required",
     });
-    if (error) {
-      setMessage(error.message);
+    const { error } = res;
+    console.log(res);
+    
+    // if (error) {
+    //   setMessage(error.message);
+    //   setIsLoading(false);
+    // } 
+    // else
+     if (error) {
       setIsLoading(false);
-    } else if (paymentIntent && paymentIntent.status === "succeeded") {
-      setIsLoading(false);
-      createOrder({ courseId: data._id, payment_info: paymentIntent });
+      createOrder({ courseId: data._id });
     }
   };
 

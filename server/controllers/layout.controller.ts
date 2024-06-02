@@ -61,6 +61,7 @@ export const createLayout = CatchAsyncError(
       res.status(200).json({
         success: true,
         message: "Layout created successfully",
+        
       });
     } catch (error: any) {
       return next(new ErrorHandler(error.message, 500));
@@ -148,9 +149,12 @@ export const editLayout = CatchAsyncError(
 // get layout by type
 export const getLayoutByType = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
+    console.log("layout");
+    
     try {
       const { type } = req.params;
       const layout = await LayoutModel.findOne({ type });
+      
       res.status(201).json({
         success: true,
         layout,

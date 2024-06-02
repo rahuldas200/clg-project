@@ -12,7 +12,9 @@ type Props = {};
 const Hero: FC<Props> = (props) => {
   const { data,isLoading } = useGetHeroDataQuery("Banner", {});
   const [search,setSearch] = useState("");
-  const router = useRouter()
+  const router = useRouter();
+  
+
   
   const handleSearch = () => {
    if(search === ""){
@@ -21,8 +23,6 @@ const Hero: FC<Props> = (props) => {
     router.push(`/courses?title=${search}`);
    }
   }
-
-  console.log(data);
 
 
   return (
